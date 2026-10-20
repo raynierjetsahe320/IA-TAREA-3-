@@ -1,0 +1,80 @@
+﻿problem,instance,algorithm,runs,mean_objective,std_objective,best_objective,mean_quality,best_quality,mean_feasible_quality,best_feasible_quality,mean_time_seconds,std_time_seconds,mean_evaluations,feasible_rate,truncated_runs,quality_gap_percent,quality_status
+coloring,n=1000_seed=101,Backtracking,1,4.0,0.0,4.0,4.0,4.0,4.0,4.0,17.201469,0.0,10000.0,1.0,1,0.0,Empata el mejor promedio factible observado
+coloring,n=1000_seed=101,Genetic Algorithm,1,4.0,0.0,4.0,4.0,4.0,4.0,4.0,0.477407,0.0,156.0,1.0,0,0.0,Empata el mejor promedio factible observado
+coloring,n=1000_seed=101,Hybrid GA+SA,1,4.0,0.0,4.0,4.0,4.0,4.0,4.0,0.407323,0.0,257.0,1.0,0,0.0,Empata el mejor promedio factible observado
+coloring,n=1000_seed=101,Simulated Annealing,1,4.0,0.0,4.0,4.0,4.0,4.0,4.0,0.366485,0.0,101.0,1.0,0,0.0,Empata el mejor promedio factible observado
+coloring,n=1000_seed=202,Backtracking,1,4.0,0.0,4.0,4.0,4.0,4.0,4.0,17.721837,0.0,10000.0,1.0,1,0.0,Empata el mejor promedio factible observado
+coloring,n=1000_seed=202,Genetic Algorithm,1,4.0,0.0,4.0,4.0,4.0,4.0,4.0,0.408661,0.0,156.0,1.0,0,0.0,Empata el mejor promedio factible observado
+coloring,n=1000_seed=202,Hybrid GA+SA,1,4.0,0.0,4.0,4.0,4.0,4.0,4.0,0.41392,0.0,257.0,1.0,0,0.0,Empata el mejor promedio factible observado
+coloring,n=1000_seed=202,Simulated Annealing,1,4.0,0.0,4.0,4.0,4.0,4.0,4.0,0.336987,0.0,101.0,1.0,0,0.0,Empata el mejor promedio factible observado
+coloring,n=1000_seed=303,Backtracking,1,4.0,0.0,4.0,4.0,4.0,4.0,4.0,17.813221,0.0,10000.0,1.0,1,0.0,Empata el mejor promedio factible observado
+coloring,n=1000_seed=303,Genetic Algorithm,1,4.0,0.0,4.0,4.0,4.0,4.0,4.0,0.385259,0.0,156.0,1.0,0,0.0,Empata el mejor promedio factible observado
+coloring,n=1000_seed=303,Hybrid GA+SA,1,4.0,0.0,4.0,4.0,4.0,4.0,4.0,0.382821,0.0,257.0,1.0,0,0.0,Empata el mejor promedio factible observado
+coloring,n=1000_seed=303,Simulated Annealing,1,4.0,0.0,4.0,4.0,4.0,4.0,4.0,0.310949,0.0,101.0,1.0,0,0.0,Empata el mejor promedio factible observado
+coloring,n=50_seed=101,Backtracking,1,4.0,0.0,4.0,4.0,4.0,4.0,4.0,0.001034,0.0,0.0,1.0,0,0.0,Empata el mejor promedio factible observado
+coloring,n=50_seed=101,Genetic Algorithm,1,4.0,0.0,4.0,4.0,4.0,4.0,4.0,0.000975,0.0,0.0,1.0,0,0.0,Empata el mejor promedio factible observado
+coloring,n=50_seed=101,Hybrid GA+SA,1,4.0,0.0,4.0,4.0,4.0,4.0,4.0,0.000898,0.0,0.0,1.0,0,0.0,Empata el mejor promedio factible observado
+coloring,n=50_seed=101,Simulated Annealing,1,4.0,0.0,4.0,4.0,4.0,4.0,4.0,0.000979,0.0,0.0,1.0,0,0.0,Empata el mejor promedio factible observado
+coloring,n=50_seed=202,Backtracking,1,4.0,0.0,4.0,4.0,4.0,4.0,4.0,0.009808,0.0,81.0,1.0,0,0.0,Empata el mejor promedio factible observado
+coloring,n=50_seed=202,Genetic Algorithm,1,4.0,0.0,4.0,4.0,4.0,4.0,4.0,0.005564,0.0,156.0,1.0,0,0.0,Empata el mejor promedio factible observado
+coloring,n=50_seed=202,Hybrid GA+SA,1,4.0,0.0,4.0,4.0,4.0,4.0,4.0,0.005453,0.0,257.0,1.0,0,0.0,Empata el mejor promedio factible observado
+coloring,n=50_seed=202,Simulated Annealing,1,4.0,0.0,4.0,4.0,4.0,4.0,4.0,0.001467,0.0,101.0,1.0,0,0.0,Empata el mejor promedio factible observado
+coloring,n=50_seed=303,Backtracking,1,4.0,0.0,4.0,4.0,4.0,4.0,4.0,0.008168,0.0,69.0,1.0,0,0.0,Empata el mejor promedio factible observado
+coloring,n=50_seed=303,Genetic Algorithm,1,4.0,0.0,4.0,4.0,4.0,4.0,4.0,0.004817,0.0,156.0,1.0,0,0.0,Empata el mejor promedio factible observado
+coloring,n=50_seed=303,Hybrid GA+SA,1,4.0,0.0,4.0,4.0,4.0,4.0,4.0,0.004866,0.0,257.0,1.0,0,0.0,Empata el mejor promedio factible observado
+coloring,n=50_seed=303,Simulated Annealing,1,4.0,0.0,4.0,4.0,4.0,4.0,4.0,0.001211,0.0,101.0,1.0,0,0.0,Empata el mejor promedio factible observado
+eggholder,"[-512,512]^2",Genetic Algorithm,1,-801.9244705073972,0.0,-801.9244705073972,-801.9244705073972,-801.9244705073972,-801.9244705073972,-801.9244705073972,0.001675,0.0,156.0,1.0,0,14.204829,Desventaja de 14.2% frente al mejor promedio factible observado
+eggholder,"[-512,512]^2",Hybrid GA+SA,1,-934.6965082823729,0.0,-934.6965082823729,-934.6965082823729,-934.6965082823729,-934.6965082823729,-934.6965082823729,0.001991,0.0,257.0,1.0,0,0.0,Empata el mejor promedio factible observado
+eggholder,"[-512,512]^2",Simulated Annealing,1,-557.7385397273783,0.0,-557.7385397273783,-557.7385397273783,-557.7385397273783,-557.7385397273783,-557.7385397273783,0.001044,0.0,101.0,1.0,0,40.329451,Desventaja de 40.3% frente al mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_0,Backtracking,1,-19.0,0.0,-19.0,19.0,19.0,19.0,19.0,6.1e-05,0.0,9.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_0,Genetic Algorithm,1,-19.0,0.0,-19.0,19.0,19.0,19.0,19.0,0.002245,0.0,156.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_0,Hybrid GA+SA,1,-19.0,0.0,-19.0,19.0,19.0,19.0,19.0,0.002736,0.0,257.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_0,Simulated Annealing,1,-19.0,0.0,-19.0,19.0,19.0,19.0,19.0,0.000713,0.0,101.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_1,Backtracking,1,-47.0,0.0,-47.0,47.0,47.0,47.0,47.0,7.1e-05,0.0,11.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_1,Genetic Algorithm,1,-47.0,0.0,-47.0,47.0,47.0,47.0,47.0,0.001624,0.0,156.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_1,Hybrid GA+SA,1,-47.0,0.0,-47.0,47.0,47.0,47.0,47.0,0.002015,0.0,257.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_1,Simulated Annealing,1,-47.0,0.0,-47.0,47.0,47.0,47.0,47.0,0.000922,0.0,101.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_2,Backtracking,1,-36.0,0.0,-36.0,36.0,36.0,36.0,36.0,5.5e-05,0.0,9.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_2,Genetic Algorithm,1,-36.0,0.0,-36.0,36.0,36.0,36.0,36.0,0.002327,0.0,156.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_2,Hybrid GA+SA,1,-36.0,0.0,-36.0,36.0,36.0,36.0,36.0,0.002768,0.0,257.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_2,Simulated Annealing,1,-36.0,0.0,-36.0,36.0,36.0,36.0,36.0,0.001193,0.0,101.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_3,Backtracking,1,-19.0,0.0,-19.0,19.0,19.0,19.0,19.0,3.5e-05,0.0,7.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_3,Genetic Algorithm,1,-19.0,0.0,-19.0,19.0,19.0,19.0,19.0,0.001819,0.0,156.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_3,Hybrid GA+SA,1,-19.0,0.0,-19.0,19.0,19.0,19.0,19.0,0.002291,0.0,257.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_3,Simulated Annealing,1,-19.0,0.0,-19.0,19.0,19.0,19.0,19.0,0.000725,0.0,101.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_4,Backtracking,1,-44.0,0.0,-44.0,44.0,44.0,44.0,44.0,6e-05,0.0,16.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_4,Genetic Algorithm,1,-43.0,0.0,-43.0,43.0,43.0,43.0,43.0,0.002228,0.0,156.0,1.0,0,2.272727,Desventaja de 2.3% frente al mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_4,Hybrid GA+SA,1,-44.0,0.0,-44.0,44.0,44.0,44.0,44.0,0.00265,0.0,257.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_4,Simulated Annealing,1,-44.0,0.0,-44.0,44.0,44.0,44.0,44.0,0.00069,0.0,101.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_5,Backtracking,1,-48.0,0.0,-48.0,48.0,48.0,48.0,48.0,4e-05,0.0,9.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_5,Genetic Algorithm,1,-48.0,0.0,-48.0,48.0,48.0,48.0,48.0,0.002321,0.0,156.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_5,Hybrid GA+SA,1,-48.0,0.0,-48.0,48.0,48.0,48.0,48.0,0.002757,0.0,257.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_5,Simulated Annealing,1,-48.0,0.0,-48.0,48.0,48.0,48.0,48.0,0.0007,0.0,101.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_6,Backtracking,1,-37.0,0.0,-37.0,37.0,37.0,37.0,37.0,7.9e-05,0.0,9.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_6,Genetic Algorithm,1,-37.0,0.0,-37.0,37.0,37.0,37.0,37.0,0.001792,0.0,156.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_6,Hybrid GA+SA,1,-37.0,0.0,-37.0,37.0,37.0,37.0,37.0,0.002211,0.0,257.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_6,Simulated Annealing,1,-37.0,0.0,-37.0,37.0,37.0,37.0,37.0,0.00069,0.0,101.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_7,Backtracking,1,-13.0,0.0,-13.0,13.0,13.0,13.0,13.0,4.5e-05,0.0,9.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_7,Genetic Algorithm,1,-13.0,0.0,-13.0,13.0,13.0,13.0,13.0,0.001687,0.0,156.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_7,Hybrid GA+SA,1,-13.0,0.0,-13.0,13.0,13.0,13.0,13.0,0.002154,0.0,257.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_7,Simulated Annealing,1,-13.0,0.0,-13.0,13.0,13.0,13.0,13.0,0.001165,0.0,101.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_8,Backtracking,1,-35.0,0.0,-35.0,35.0,35.0,35.0,35.0,4.9e-05,0.0,9.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_8,Genetic Algorithm,1,-35.0,0.0,-35.0,35.0,35.0,35.0,35.0,0.001905,0.0,156.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_8,Hybrid GA+SA,1,-35.0,0.0,-35.0,35.0,35.0,35.0,35.0,0.002355,0.0,257.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_8,Simulated Annealing,1,-35.0,0.0,-35.0,35.0,35.0,35.0,35.0,0.001248,0.0,101.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_9,Backtracking,1,-45.0,0.0,-45.0,45.0,45.0,45.0,45.0,5.7e-05,0.0,10.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_9,Genetic Algorithm,1,-45.0,0.0,-45.0,45.0,45.0,45.0,45.0,0.001974,0.0,156.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_9,Hybrid GA+SA,1,-45.0,0.0,-45.0,45.0,45.0,45.0,45.0,0.002508,0.0,257.0,1.0,0,0.0,Empata el mejor promedio factible observado
+knapsack,kaggle_opcion1_fila_9,Simulated Annealing,1,-45.0,0.0,-45.0,45.0,45.0,45.0,45.0,0.000534,0.0,101.0,1.0,0,0.0,Empata el mejor promedio factible observado
+queens,N=100,Backtracking,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.024057,0.0,175.0,1.0,0,0.0,Factible y de calidad óptima observada: 0 conflictos
+queens,N=100,Genetic Algorithm,1,48.0,0.0,48.0,48.0,48.0,,,0.017703,0.0,156.0,0.0,0,,Sin solución factible; calidad no comparable
+queens,N=100,Hybrid GA+SA,1,43.0,0.0,43.0,43.0,43.0,,,0.02147,0.0,257.0,0.0,0,,Sin solución factible; calidad no comparable
+queens,N=100,Simulated Annealing,1,48.0,0.0,48.0,48.0,48.0,,,0.003741,0.0,101.0,0.0,0,,Sin solución factible; calidad no comparable
+queens,N=50,Backtracking,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.230238,0.0,902.0,1.0,0,0.0,Factible y de calidad óptima observada: 0 conflictos
+queens,N=50,Genetic Algorithm,1,19.0,0.0,19.0,19.0,19.0,,,0.009245,0.0,156.0,0.0,0,,Sin solución factible; calidad no comparable
+queens,N=50,Hybrid GA+SA,1,18.0,0.0,18.0,18.0,18.0,,,0.011873,0.0,257.0,0.0,0,,Sin solución factible; calidad no comparable
+queens,N=50,Simulated Annealing,1,28.0,0.0,28.0,28.0,28.0,,,0.003905,0.0,101.0,0.0,0,,Sin solución factible; calidad no comparable
+queens,N=8,Backtracking,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.000801,0.0,39.0,1.0,0,0.0,Factible y de calidad óptima observada: 0 conflictos
+queens,N=8,Genetic Algorithm,1,1.0,0.0,1.0,1.0,1.0,,,0.002521,0.0,156.0,0.0,0,,Sin solución factible; calidad no comparable
+queens,N=8,Hybrid GA+SA,1,1.0,0.0,1.0,1.0,1.0,,,0.003984,0.0,257.0,0.0,0,,Sin solución factible; calidad no comparable
+queens,N=8,Simulated Annealing,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.000934,0.0,101.0,1.0,0,0.0,Factible y de calidad óptima observada: 0 conflictos

@@ -1,0 +1,489 @@
+\documentclass[12pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,mexico]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[letterpaper,margin=2.5cm,headheight=15pt]{geometry}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{caption}
+
+\definecolor{navy}{HTML}{17324D}
+\definecolor{blue}{HTML}{2878A5}
+\definecolor{pale}{HTML}{EAF2F7}
+\definecolor{ink}{HTML}{263746}
+\definecolor{muted}{HTML}{566A78}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=navy,
+  urlcolor=blue,
+  citecolor=navy,
+  pdftitle={Comparación de estrategias de búsqueda y optimización},
+  pdfauthor={Torres Flores Raynier Jetsahe}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlist[itemize]{leftmargin=1.5em,itemsep=0.25em,topsep=0.35em}
+\renewcommand{\arraystretch}{1.2}
+\titleformat{\section}{\Large\bfseries\color{navy}}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries\color{blue}}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{2.0em}{0.7em}
+\titlespacing*{\subsection}{0pt}{1.2em}{0.4em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Inteligencia Artificial}
+\fancyhead[R]{\small Informe experimental}
+\fancyfoot[L]{\small Torres Flores Raynier Jetsahe}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\newcommand{\metric}[1]{\textcolor{navy}{\textbf{#1}}}
+\newcommand{\resultfigure}[4]{%
+  \begin{figure}[H]
+    \centering
+    \IfFileExists{resultados/#1}{%
+      \includegraphics[width=#2\textwidth]{resultados/#1}%
+    }{%
+      \fcolorbox{blue}{pale}{%
+        \parbox[c][4.0cm][c]{0.82\textwidth}{%
+          \centering
+          Gráfica pendiente de generar.\\
+          Ejecute el experimento rápido para crear\\
+          \texttt{\detokenize{resultados/#1}}.%
+        }%
+      }%
+    }
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+\begin{document}
+
+% PORTADA
+\begin{titlepage}
+  \pagecolor{navy}
+  \color{white}
+  \centering
+  \vspace*{1.0cm}
+  {\Large\scshape Informe académico\par}
+  \vspace{0.7cm}
+  {\color{blue}\rule{0.78\textwidth}{1.2pt}\par}
+  \vspace{1.4cm}
+  {\Huge\bfseries Comparación de estrategias\\[0.25em]
+  de búsqueda y optimización\par}
+  \vspace{0.8cm}
+  {\Large Informe de experimentación\par}
+  \vspace{1.6cm}
+  {\large\textbf{Asignatura}\par}
+  \vspace{0.2cm}
+  {\Large Inteligencia Artificial\par}
+  \vspace{1.0cm}
+  {\large\textbf{Estudiante}\par}
+  \vspace{0.2cm}
+  {\Large Torres Flores Raynier Jetsahe\par}
+  \vspace{0.8cm}
+  {\large\textbf{Grupo}\par}
+  \vspace{0.2cm}
+  {\Large 1959\par}
+  \vfill
+  {\color{blue}\rule{0.78\textwidth}{1.2pt}\par}
+  \vspace{0.5cm}
+  {\large Proyecto: algoritmos de búsqueda y optimización\par}
+  \vspace{0.4cm}
+  {\large \today\par}
+\end{titlepage}
+\nopagecolor
+\color{ink}
+\setcounter{page}{1}
+
+\begin{abstract}
+Este informe presenta una comparación experimental de búsqueda sistemática y
+metaheurísticas en N-Reinas, mochila 0/1, coloreado de grafos y la función
+continua Eggholder. Se explican las estrategias, las representaciones de
+solución y la configuración empleada. Los resultados se interpretan separando
+dos conceptos: la \emph{factibilidad}, que indica si se respetan las
+restricciones, y la \emph{calidad}, que indica qué tan conveniente es una
+solución factible. La ejecución documentada usa un presupuesto rápido y una
+repetición por instancia; por ello sus resultados son evidencia exploratoria,
+no una conclusión estadística ni una garantía de optimalidad.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Introducción}
+
+Resolver un problema de optimización implica explorar un conjunto de
+alternativas que puede crecer rápidamente con el tamaño de la instancia. La
+búsqueda exacta puede certificar una solución, pero su costo puede ser alto.
+Las metaheurísticas exploran soluciones de forma guiada y suelen producir
+respuestas útiles con un presupuesto acotado, aunque no necesariamente
+certifican el óptimo.
+
+El objetivo de este trabajo es comparar cuatro enfoques implementados en el
+proyecto: \emph{backtracking} con heurísticas específicas, recocido simulado
+(SA), algoritmo genético (GA) y un híbrido GA+SA. Se aplican a N-Reinas,
+mochila 0/1 y coloreado de grafos; SA y GA también se comparan en Eggholder,
+una función de optimización continua.
+
+La interpretación no se limita a preguntar qué método obtuvo el número más
+favorable. También considera si la respuesta respeta las reglas, cuánta calidad
+alcanza, cuánto tarda y si la búsqueda exacta terminó o fue truncada por el
+límite de cómputo.
+
+\section{Descripción de las estrategias implementadas}
+
+\subsection{Backtracking con heurísticas}
+
+Backtracking construye una solución parcial y explora decisiones de forma
+recursiva. Cuando una decisión ya no puede conducir a una respuesta válida o
+mejor que la conocida, se descarta esa rama. La implementación no recorre las
+alternativas en orden arbitrario: usa ordenamientos, cotas y propagación
+específicos de cada problema. En coloreado busca reducir el número de colores y
+puede detenerse al alcanzar el límite de nodos configurado.
+
+Si la búsqueda termina sin agotar el límite, sus reglas de poda permiten
+certificar el resultado correspondiente. Si se trunca, el mejor resultado
+encontrado sigue siendo una solución candidata, pero no se puede afirmar que
+sea óptimo ni que no exista una alternativa mejor.
+
+\subsection{Recocido simulado}
+
+SA parte de una solución y genera vecinos mediante una modificación pequeña.
+Acepta siempre una mejora y puede aceptar un empeoramiento con probabilidad
+\[
+  P(\text{aceptar})=\exp\left(-\frac{\Delta}{T}\right),
+\]
+donde $\Delta$ es el aumento del costo y $T$ es la temperatura. Al principio,
+una temperatura mayor permite explorar; al enfriarse, se favorecen movimientos
+que no empeoran la solución. El algoritmo conserva la mejor solución visitada,
+aunque los movimientos actuales sean temporales.
+
+\subsection{Algoritmo genético}
+
+GA mantiene una población de soluciones. En cada generación selecciona padres
+mediante torneo, recombina sus decisiones, aplica mutación y conserva una
+cantidad de élite. La población permite explorar varias regiones; la
+recombinación reutiliza componentes prometedores y la mutación introduce
+diversidad. Si la población o el número de generaciones son pequeños, el
+algoritmo puede converger antes de explorar suficiente espacio.
+
+\subsection{Híbrido GA+SA}
+
+El híbrido usa la mejor solución producida por GA como estado inicial de SA.
+La combinación busca equilibrar exploración poblacional y refinamiento local.
+Su costo incluye ambas fases. No se espera que siempre supere a ambos métodos:
+si GA entrega un punto de partida pobre o SA dispone de pocos pasos, el híbrido
+puede conservar esa limitación.
+
+\section{Representación utilizada para cada problema}
+
+\subsection{N-Reinas: permutación}
+
+La solución es una permutación de columnas: el índice representa la fila y el
+valor representa la columna ocupada. Esta representación garantiza una reina
+por fila y por columna desde el inicio; el objetivo restante es eliminar los
+ataques diagonales. SA intercambia dos posiciones, y GA utiliza cruce OX y
+mutación por intercambio para conservar la propiedad de permutación.
+
+Esta elección evita gastar evaluaciones en tableros que repiten fila o columna.
+Sin embargo, una permutación no garantiza que las diagonales sean válidas. Al
+aumentar $N$, el espacio de permutaciones crece y las metaheurísticas con un
+presupuesto pequeño pueden terminar con ataques diagonales. En backtracking se
+elige la fila con menos columnas disponibles y se priorizan valores que
+restringen menos las demás filas.
+
+\subsection{Mochila 0/1: vector binario}
+
+Cada posición del vector corresponde a un objeto: 1 indica que se incluye y 0
+que se excluye. Esta representación refleja que los objetos son indivisibles.
+SA cambia un bit; GA mezcla decisiones de los padres. Ambas metaheurísticas
+reparan las propuestas eliminando artículos de menor razón valor/peso hasta
+respetar la capacidad.
+
+La reparación hace que las propuestas sean factibles, pero una eliminación
+local puede quitar un objeto que fuera importante en una combinación global.
+Por ello una selección válida no necesariamente tiene el mayor valor posible.
+Backtracking ordena por razón valor/peso y usa una cota superior fraccional
+para evitar explorar ramas que no pueden mejorar el valor incumbente.
+
+\subsection{Coloreado de grafos: vector de colores}
+
+Cada posición representa un vértice y su entero indica el color asignado. Una
+asignación es factible únicamente si ningún par de vértices adyacentes comparte
+color; los conflictos se cuentan por aristas. El objetivo de calidad es
+minimizar el número de colores entre las asignaciones factibles.
+
+La búsqueda comienza desde una coloración voraz DSATUR y ensaya cantidades
+menores de colores hasta una cota inferior obtenida mediante una clique. SA
+recolorea un vértice por paso; GA combina y muta colores por vértice; el híbrido
+aplica GA y refina la asignación con SA. Durante la búsqueda pueden aparecer
+asignaciones completas pero infactibles. En grafos grandes, demostrar que no
+existe una coloración con un color menos puede ser mucho más costoso que hallar
+una coloración válida. Por eso una coloración válida de cuatro colores es un
+buen resultado observado, pero no prueba que cuatro sea el mínimo si
+backtracking se trunca.
+
+\subsection{Eggholder: coordenadas reales}
+
+La solución es un par $(x,y)$ con ambas coordenadas en $[-512,512]$. SA genera
+desplazamientos gaussianos locales cuyo tamaño depende del enfriamiento. GA
+utiliza cruza lineal y muta una coordenada con ruido; las propuestas se recortan
+al dominio permitido.
+
+Eggholder tiene numerosos valles y picos. Pasos cortos pueden quedar atrapados
+en un mínimo local; pasos grandes exploran más, pero pueden saltarse regiones
+prometedoras. La población de GA ofrece varias propuestas simultáneas, aunque
+no garantiza encontrar el mínimo global. En este problema estar dentro del
+dominio significa factibilidad; la calidad depende del valor de la función,
+para el cual un número menor es mejor.
+
+\section{Configuración experimental}
+
+Las instancias se comparan bajo semillas reproducibles y los algoritmos se
+ejecutan sobre las mismas instancias. La ejecución documentada cubre 20
+instancias: tres tamaños de N-Reinas, diez filas de mochila, seis grafos y una
+instancia de Eggholder. Cada instancia se ejecutó una vez en modo rápido, lo
+que produce 79 registros de algoritmo: cuatro métodos por instancia salvo
+Eggholder, donde no se usa backtracking.
+
+\begin{table}[H]
+  \centering
+  \caption{Instancias utilizadas en la ejecución documentada.}
+  \begin{tabularx}{\textwidth}{>{\bfseries}p{3.0cm} X}
+    \toprule
+    Problema & Instancias \\
+    \midrule
+    N-Reinas & $N=8$, $N=50$ y $N=100$. \\
+    Mochila 0/1 & Filas 0--9 del archivo \texttt{knapsack\_5\_items.csv}; se usan pesos, valores y capacidad. \\
+    Coloreado & Grafos Erdős--Rényi reproducidos con NetworkX: $n=50$ y $n=1000$, semillas 101, 202 y 303, con $p=6/(n-1)$. \\
+    Eggholder & Dos variables reales en el dominio $[-512,512]^2$. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+La mochila procede del conjunto público
+\href{https://www.kaggle.com/datasets/warcoder/knapsack-problem}
+{\emph{warcoder/knapsack-problem}}; el archivo incluido fue verificado mediante
+SHA-256 frente al valor consignado en el cuaderno de referencia. Se usan
+únicamente pesos, valores y capacidad, no las respuestas incluidas en el CSV.
+Los grafos se vuelven a generar con el tamaño, la probabilidad y las semillas
+del cuaderno, en lugar de usar aristas de ejemplo.
+
+\section{Parámetros utilizados}
+
+La corrida incluida corresponde al comando rápido, con semilla base 2026:
+
+\begin{table}[H]
+  \centering
+  \caption{Presupuestos y parámetros de la corrida rápida documentada.}
+  \begin{tabularx}{\textwidth}{>{\bfseries}p{3.1cm} p{3.4cm} X}
+    \toprule
+    Estrategia & Parámetros & Justificación e implicación \\
+    \midrule
+    SA & 100 iteraciones; $T_0=100$; enfriamiento 0.995; $T_{\min}=10^{-8}$. &
+    Presupuesto reducido para ejecutar todas las instancias con rapidez. El enfriamiento gradual permite aceptar algunos empeoramientos al comienzo y estabiliza después; la temperatura inicial común no está calibrada de forma óptima para todas las escalas de costo. \\
+    GA & Población 12; 12 generaciones; cruza 0.9; mutación 0.05; elitismo 2; torneo 3. &
+    Mantiene una búsqueda poblacional pequeña. Más individuos o generaciones aumentarían la exploración y el costo; el elitismo preserva los mejores individuos y la mutación introduce diversidad. \\
+    Backtracking & Límite de 10\,000 nodos. &
+    Evita que la búsqueda exacta consuma tiempo excesivo en instancias combinatorias grandes. Alcanzar el tope implica truncamiento y no certifica optimalidad. \\
+    Repeticiones & Una por instancia. &
+    Permite una validación rápida, pero no mide adecuadamente la variabilidad aleatoria entre ejecuciones. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+Estos valores son un presupuesto práctico de comparación, no hiperparámetros
+óptimos universales. Una repetición sirve para verificar el flujo de ejecución
+y observar ejemplos; una evaluación robusta de métodos estocásticos debe usar
+múltiples semillas y resumir medias, dispersión y tasas de factibilidad.
+
+\section{Resultados}
+
+\subsection{Distinción entre factibilidad y calidad}
+
+\metric{Factibilidad} responde si la solución respeta las restricciones:
+capacidad no excedida en mochila, cero ataques en reinas, cero conflictos en
+coloreado y coordenadas dentro del dominio en Eggholder.
+
+\metric{Calidad} compara soluciones factibles según el objetivo del problema:
+mayor valor en mochila, menos colores en grafos y menor valor de función en
+Eggholder. En N-Reinas, todas las soluciones factibles tienen cero conflictos;
+por tanto, una vez factible, la calidad queda empatada. Una solución no
+factible puede tener un número de objetivo aparentemente atractivo, pero no
+debe contarse como respuesta válida.
+
+La brecha porcentual se compara con la mejor calidad factible observada entre
+los métodos de esta corrida. Es una referencia empírica, no un porcentaje de
+optimalidad, excepto cuando el algoritmo exacto termina y certifica el óptimo.
+
+\subsection{Resumen observado}
+
+\begin{table}[H]
+  \centering
+  \caption{Resultados representativos de la ejecución rápida. Los tiempos son de esta máquina y una repetición.}
+  \small
+  \begin{tabularx}{\textwidth}{>{\bfseries}p{2.5cm} X p{2.7cm} p{2.3cm}}
+    \toprule
+    Problema & Observación & Factibilidad & Calidad / advertencia \\
+    \midrule
+    N-Reinas, $N=8$ & Backtracking y SA hallaron solución válida. & GA e híbrido no fueron factibles en esta corrida. & Las soluciones válidas tienen 0 conflictos; la calidad factible empata. \\
+    N-Reinas, $N=50,100$ & Backtracking resolvió ambos tamaños; las metaheurísticas no lograron cero conflictos. & Solo backtracking fue factible. & SA/GA tenían 100 pasos o 12 generaciones; el presupuesto fue corto para esta instancia. \\
+    Mochila & Backtracking obtuvo el mejor valor en las diez filas; las metaheurísticas empataron en nueve. & Todos los métodos fueron factibles. & En la fila 4 GA obtuvo 43 frente a 44: brecha aproximada de 2.3\%. \\
+    Grafos, $n=50$ & Todos los métodos encontraron coloración de cuatro colores. & 100\% factibles en las seis instancias. & El resultado mínimo no queda certificado si la búsqueda exacta se trunca. \\
+    Grafos, $n=1000$ & Todos encontraron coloración válida de cuatro colores. & 100\% factibles. & Backtracking alcanzó 10\,000 nodos en las tres semillas; no demuestra que cuatro sea el mínimo. \\
+    Eggholder & El híbrido obtuvo $-934.697$; GA $-801.924$; SA $-557.739$. & Los tres permanecieron dentro del dominio. & El híbrido fue el mejor observado; una corrida no permite afirmar superioridad general. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+Los datos de mochila tienen pocos objetos por instancia, lo que favorece que
+backtracking termine rápidamente y encuentre el mejor valor en las diez filas.
+En cambio, los tableros grandes de reinas muestran una diferencia marcada
+entre hallar un tablero estructuralmente correcto (permutación) y eliminar
+todos los ataques diagonales. En Eggholder, el orden observado entre métodos
+es compatible con la presencia de mínimos locales y el refinamiento que aporta
+SA al punto inicial de GA, pero no constituye prueba estadística.
+
+\section{Visualizaciones}
+
+Las curvas siguientes se generan a partir de la corrida del proyecto y se
+incluyen si los PNG existen dentro de la carpeta \texttt{resultados}. Para
+compararlas, recuérdese que algunas gráficas representan conflictos, otras
+valor y otras colores; la dirección de mejora no es idéntica en todos los
+problemas.
+
+\resultfigure{convergence_queens_N_100.png}{0.82}{Convergencia en N-Reinas para $N=100$. Cero conflictos representa una solución factible.}{fig:queens}
+\resultfigure{convergence_knapsack_kaggle_opcion1_fila_4.png}{0.82}{Convergencia en la fila 4 de mochila; el valor total se maximiza.}{fig:knapsack}
+\resultfigure{convergence_coloring_n_1000_seed_101.png}{0.82}{Convergencia del coloreado en un grafo de 1000 vértices, semilla 101.}{fig:coloring}
+\resultfigure{convergence_eggholder_-512_512_2.png}{0.82}{Convergencia en Eggholder dentro del dominio bidimensional.}{fig:eggholder}
+
+\section{Comparación de algoritmos}
+
+\begin{table}[H]
+  \centering
+  \caption{Comparación cualitativa basada en los mecanismos y resultados observados.}
+  \small
+  \begin{tabularx}{\textwidth}{>{\bfseries}p{2.8cm} X X}
+    \toprule
+    Método & Ventaja observada o esperada & Límite importante \\
+    \midrule
+    Backtracking & Puede certificar soluciones/óptimos al terminar; fue eficaz en mochila y N-Reinas de estos tamaños. & Puede crecer exponencialmente; en grafos de 1000 nodos se truncó en las tres semillas. \\
+    Recocido simulado & Movimiento local barato; útil para refinar soluciones y explorar gracias a aceptar temporalmente empeoramientos. & Depende de escala de objetivo, temperatura y presupuesto; no garantiza óptimo global. \\
+    Algoritmo genético & Explora varias soluciones a la vez y conserva diversidad mediante mutación. & Población y generaciones pequeñas pueden no bastar; en N-Reinas grandes no encontró cero conflictos en la corrida rápida. \\
+    Híbrido GA+SA & Combina recombinación global con refinamiento local; fue el mejor observado en Eggholder. & Acumula el costo de las dos fases y hereda las limitaciones del estado inicial y del presupuesto. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+Los tiempos absolutos dependen del equipo y no deben generalizarse como una
+propiedad intrínseca del algoritmo. La comparación más justa debe mantener
+iguales las instancias, semillas y criterios de evaluación, además de reportar
+calidad, tasa factible, tiempo y truncamientos juntos.
+
+En los grafos de 1000 nodos, los tiempos de las tres semillas promedian
+aproximadamente 17.59\,s para backtracking, 0.41\,s para GA, 0.40\,s para el
+híbrido y 0.33\,s para SA. La diferencia se debe interpretar junto con el
+objetivo de cada método: las metaheurísticas hallaron cuatro colores válidos
+sin certificar que fueran el mínimo; backtracking alcanzó su presupuesto de
+10\,000 nodos intentando certificar si era posible usar menos colores. Por
+tanto, la ventaja de velocidad observada no implica que las metaheurísticas
+hayan demostrado optimalidad.
+
+\section{Discusión}
+
+Los resultados ilustran que el comportamiento depende de la estructura del
+problema y de la codificación. La permutación de N-Reinas evita ataques por
+fila y columna, pero deja una parte difícil --las diagonales-- para optimizar.
+Con solo 100 pasos o 12 generaciones, las metaheurísticas no alcanzaron cero
+conflictos en los tableros de 50 y 100 reinas, mientras backtracking sí lo
+hizo en esta ejecución.
+
+En mochila, la reparación mantiene todas las propuestas dentro de la
+capacidad, lo que explica la factibilidad del 100\%. No obstante, reparar por
+razón valor/peso es una decisión local y no garantiza por sí sola el mejor
+subconjunto. Como cada instancia incluida contiene pocos objetos, la búsqueda
+con poda de backtracking puede resolverlas con rapidez y ofrecer una
+referencia más sólida.
+
+En coloreado conviene separar claramente validez y número de colores. Las seis
+instancias terminaron con coloraciones válidas de cuatro colores, una señal de
+buena calidad observada. Sin embargo, hallar una solución con cuatro colores
+solo establece que existe una coloración de ese tamaño; no establece que no
+exista otra con tres. El límite de backtracking impidió certificar esa
+optimalidad en los grafos grandes.
+
+Eggholder evidencia el efecto del paisaje de optimización. En esta corrida el
+híbrido encontró el menor valor de los tres métodos; GA proporcionó una
+solución inicial que SA pudo refinar. Aun así, el resultado depende de una
+semilla y de presupuestos cortos: se necesitarían varias repeticiones y
+presupuestos mayores para evaluar su estabilidad.
+
+Finalmente, la comparación de tiempos debe matizarse. En problemas pequeños,
+el costo de inicialización puede ser similar o mayor que el de búsqueda. En
+grafos grandes, el trabajo de backtracking crece al intentar certificar una
+cantidad menor de colores; una metaheurística puede hallar rápido una
+coloración válida, aunque no pruebe que sea óptima. Ningún método es mejor en
+todos los criterios y problemas.
+
+\section{Conclusiones}
+
+\begin{enumerate}[leftmargin=1.7em]
+  \item La representación influye en qué soluciones puede proponer el
+  algoritmo: las permutaciones preservan filas y columnas en N-Reinas, los
+  vectores binarios representan decisiones indivisibles en mochila y los
+  vectores de color codifican directamente las asignaciones del grafo.
+  \item Factibilidad y calidad deben reportarse por separado. Una solución
+  factible cumple restricciones, pero puede ser de baja calidad; una solución
+  de alta calidad aparente que viola restricciones no es aceptable.
+  \item La búsqueda exacta fue adecuada para las instancias pequeñas y para
+  N-Reinas hasta $N=100$ en esta corrida, pero alcanzó su presupuesto en los
+  grafos grandes. El truncamiento no prueba inviabilidad ni optimalidad.
+  \item Las metaheurísticas produjeron resultados útiles en grafos y
+  Eggholder, pero los presupuestos rápidos fueron insuficientes para resolver
+  todos los tableros de reinas. El híbrido ofreció el mejor valor observado en
+  Eggholder, sin que una sola repetición permita generalizar.
+  \item Para conclusiones más sólidas se recomienda aumentar las repeticiones,
+  conservar semillas, comparar la variabilidad y probar presupuestos
+  progresivamente mayores sin ocultar el costo computacional.
+\end{enumerate}
+
+\section*{Reproducibilidad}
+\addcontentsline{toc}{section}{Reproducibilidad}
+
+Desde la raíz del proyecto, genere nuevamente los resultados y gráficas con:
+
+\begin{verbatim}
+.\.venv\Scripts\python.exe -m ia_optimizacion --quick --output resultados
+\end{verbatim}
+
+Compile este archivo con pdfLaTeX dos veces para actualizar las referencias y
+la tabla de contenidos:
+
+\begin{verbatim}
+pdflatex informe_tarea3.tex
+pdflatex informe_tarea3.tex
+\end{verbatim}
+
+El informe usa las cifras de una ejecución rápida ya guardada en
+\texttt{resultados/summary.csv}. Si se regenera la carpeta con otros parámetros
+o semillas, actualice también las cifras resumidas de las secciones de
+resultados y discusión.
+
+\end{document}

@@ -1,0 +1,80 @@
+﻿problem,instance,algorithm,runs,mean_objective,std_objective,best_objective,mean_time_seconds,std_time_seconds,mean_evaluations,feasible_rate,truncated_runs
+coloring,n=1000_seed=101,Backtracking,1,4.0,0.0,4.0,13.436372,0.0,10000.0,1.0,1
+coloring,n=1000_seed=101,Genetic Algorithm,1,4.0,0.0,4.0,0.304968,0.0,156.0,1.0,0
+coloring,n=1000_seed=101,Hybrid GA+SA,1,4.0,0.0,4.0,0.310129,0.0,257.0,1.0,0
+coloring,n=1000_seed=101,Simulated Annealing,1,4.0,0.0,4.0,0.253879,0.0,101.0,1.0,0
+coloring,n=1000_seed=202,Backtracking,1,4.0,0.0,4.0,16.143826,0.0,10000.0,1.0,1
+coloring,n=1000_seed=202,Genetic Algorithm,1,4.0,0.0,4.0,0.737702,0.0,156.0,1.0,0
+coloring,n=1000_seed=202,Hybrid GA+SA,1,4.0,0.0,4.0,0.786185,0.0,257.0,1.0,0
+coloring,n=1000_seed=202,Simulated Annealing,1,4.0,0.0,4.0,0.619317,0.0,101.0,1.0,0
+coloring,n=1000_seed=303,Backtracking,1,4.0,0.0,4.0,33.774285,0.0,10000.0,1.0,1
+coloring,n=1000_seed=303,Genetic Algorithm,1,4.0,0.0,4.0,0.759323,0.0,156.0,1.0,0
+coloring,n=1000_seed=303,Hybrid GA+SA,1,4.0,0.0,4.0,0.782968,0.0,257.0,1.0,0
+coloring,n=1000_seed=303,Simulated Annealing,1,4.0,0.0,4.0,0.617261,0.0,101.0,1.0,0
+coloring,n=50_seed=101,Backtracking,1,4.0,0.0,4.0,0.000952,0.0,0.0,1.0,0
+coloring,n=50_seed=101,Genetic Algorithm,1,4.0,0.0,4.0,0.001301,0.0,0.0,1.0,0
+coloring,n=50_seed=101,Hybrid GA+SA,1,4.0,0.0,4.0,0.000882,0.0,0.0,1.0,0
+coloring,n=50_seed=101,Simulated Annealing,1,4.0,0.0,4.0,0.000898,0.0,0.0,1.0,0
+coloring,n=50_seed=202,Backtracking,1,4.0,0.0,4.0,0.006167,0.0,81.0,1.0,0
+coloring,n=50_seed=202,Genetic Algorithm,1,4.0,0.0,4.0,0.004084,0.0,156.0,1.0,0
+coloring,n=50_seed=202,Hybrid GA+SA,1,4.0,0.0,4.0,0.004825,0.0,257.0,1.0,0
+coloring,n=50_seed=202,Simulated Annealing,1,4.0,0.0,4.0,0.001055,0.0,101.0,1.0,0
+coloring,n=50_seed=303,Backtracking,1,4.0,0.0,4.0,0.005369,0.0,69.0,1.0,0
+coloring,n=50_seed=303,Genetic Algorithm,1,4.0,0.0,4.0,0.003795,0.0,156.0,1.0,0
+coloring,n=50_seed=303,Hybrid GA+SA,1,4.0,0.0,4.0,0.003929,0.0,257.0,1.0,0
+coloring,n=50_seed=303,Simulated Annealing,1,4.0,0.0,4.0,0.000956,0.0,101.0,1.0,0
+eggholder,"[-512,512]^2",Genetic Algorithm,1,-801.9244705073972,0.0,-801.9244705073972,0.001859,0.0,156.0,1.0,0
+eggholder,"[-512,512]^2",Hybrid GA+SA,1,-934.6965082823729,0.0,-934.6965082823729,0.002404,0.0,257.0,1.0,0
+eggholder,"[-512,512]^2",Simulated Annealing,1,-557.7385397273783,0.0,-557.7385397273783,0.000822,0.0,101.0,1.0,0
+knapsack,kaggle_opcion1_fila_0,Backtracking,1,-19.0,0.0,-19.0,4.8e-05,0.0,9.0,1.0,0
+knapsack,kaggle_opcion1_fila_0,Genetic Algorithm,1,-19.0,0.0,-19.0,0.001455,0.0,156.0,1.0,0
+knapsack,kaggle_opcion1_fila_0,Hybrid GA+SA,1,-19.0,0.0,-19.0,0.001903,0.0,257.0,1.0,0
+knapsack,kaggle_opcion1_fila_0,Simulated Annealing,1,-19.0,0.0,-19.0,0.000477,0.0,101.0,1.0,0
+knapsack,kaggle_opcion1_fila_1,Backtracking,1,-47.0,0.0,-47.0,3.9e-05,0.0,11.0,1.0,0
+knapsack,kaggle_opcion1_fila_1,Genetic Algorithm,1,-47.0,0.0,-47.0,0.001452,0.0,156.0,1.0,0
+knapsack,kaggle_opcion1_fila_1,Hybrid GA+SA,1,-47.0,0.0,-47.0,0.001791,0.0,257.0,1.0,0
+knapsack,kaggle_opcion1_fila_1,Simulated Annealing,1,-47.0,0.0,-47.0,0.000705,0.0,101.0,1.0,0
+knapsack,kaggle_opcion1_fila_2,Backtracking,1,-36.0,0.0,-36.0,2.6e-05,0.0,9.0,1.0,0
+knapsack,kaggle_opcion1_fila_2,Genetic Algorithm,1,-36.0,0.0,-36.0,0.001261,0.0,156.0,1.0,0
+knapsack,kaggle_opcion1_fila_2,Hybrid GA+SA,1,-36.0,0.0,-36.0,0.001652,0.0,257.0,1.0,0
+knapsack,kaggle_opcion1_fila_2,Simulated Annealing,1,-36.0,0.0,-36.0,0.000401,0.0,101.0,1.0,0
+knapsack,kaggle_opcion1_fila_3,Backtracking,1,-19.0,0.0,-19.0,2.4e-05,0.0,7.0,1.0,0
+knapsack,kaggle_opcion1_fila_3,Genetic Algorithm,1,-19.0,0.0,-19.0,0.001402,0.0,156.0,1.0,0
+knapsack,kaggle_opcion1_fila_3,Hybrid GA+SA,1,-19.0,0.0,-19.0,0.001796,0.0,257.0,1.0,0
+knapsack,kaggle_opcion1_fila_3,Simulated Annealing,1,-19.0,0.0,-19.0,0.000518,0.0,101.0,1.0,0
+knapsack,kaggle_opcion1_fila_4,Backtracking,1,-44.0,0.0,-44.0,3.6e-05,0.0,16.0,1.0,0
+knapsack,kaggle_opcion1_fila_4,Genetic Algorithm,1,-43.0,0.0,-43.0,0.001234,0.0,156.0,1.0,0
+knapsack,kaggle_opcion1_fila_4,Hybrid GA+SA,1,-44.0,0.0,-44.0,0.001699,0.0,257.0,1.0,0
+knapsack,kaggle_opcion1_fila_4,Simulated Annealing,1,-44.0,0.0,-44.0,0.000448,0.0,101.0,1.0,0
+knapsack,kaggle_opcion1_fila_5,Backtracking,1,-48.0,0.0,-48.0,3e-05,0.0,9.0,1.0,0
+knapsack,kaggle_opcion1_fila_5,Genetic Algorithm,1,-48.0,0.0,-48.0,0.00143,0.0,156.0,1.0,0
+knapsack,kaggle_opcion1_fila_5,Hybrid GA+SA,1,-48.0,0.0,-48.0,0.001847,0.0,257.0,1.0,0
+knapsack,kaggle_opcion1_fila_5,Simulated Annealing,1,-48.0,0.0,-48.0,0.000454,0.0,101.0,1.0,0
+knapsack,kaggle_opcion1_fila_6,Backtracking,1,-37.0,0.0,-37.0,2.8e-05,0.0,9.0,1.0,0
+knapsack,kaggle_opcion1_fila_6,Genetic Algorithm,1,-37.0,0.0,-37.0,0.001217,0.0,156.0,1.0,0
+knapsack,kaggle_opcion1_fila_6,Hybrid GA+SA,1,-37.0,0.0,-37.0,0.001556,0.0,257.0,1.0,0
+knapsack,kaggle_opcion1_fila_6,Simulated Annealing,1,-37.0,0.0,-37.0,0.000397,0.0,101.0,1.0,0
+knapsack,kaggle_opcion1_fila_7,Backtracking,1,-13.0,0.0,-13.0,2.6e-05,0.0,9.0,1.0,0
+knapsack,kaggle_opcion1_fila_7,Genetic Algorithm,1,-13.0,0.0,-13.0,0.001266,0.0,156.0,1.0,0
+knapsack,kaggle_opcion1_fila_7,Hybrid GA+SA,1,-13.0,0.0,-13.0,0.001741,0.0,257.0,1.0,0
+knapsack,kaggle_opcion1_fila_7,Simulated Annealing,1,-13.0,0.0,-13.0,0.000486,0.0,101.0,1.0,0
+knapsack,kaggle_opcion1_fila_8,Backtracking,1,-35.0,0.0,-35.0,2.8e-05,0.0,9.0,1.0,0
+knapsack,kaggle_opcion1_fila_8,Genetic Algorithm,1,-35.0,0.0,-35.0,0.001263,0.0,156.0,1.0,0
+knapsack,kaggle_opcion1_fila_8,Hybrid GA+SA,1,-35.0,0.0,-35.0,0.001632,0.0,257.0,1.0,0
+knapsack,kaggle_opcion1_fila_8,Simulated Annealing,1,-35.0,0.0,-35.0,0.000455,0.0,101.0,1.0,0
+knapsack,kaggle_opcion1_fila_9,Backtracking,1,-45.0,0.0,-45.0,2.6e-05,0.0,10.0,1.0,0
+knapsack,kaggle_opcion1_fila_9,Genetic Algorithm,1,-45.0,0.0,-45.0,0.001334,0.0,156.0,1.0,0
+knapsack,kaggle_opcion1_fila_9,Hybrid GA+SA,1,-45.0,0.0,-45.0,0.001716,0.0,257.0,1.0,0
+knapsack,kaggle_opcion1_fila_9,Simulated Annealing,1,-45.0,0.0,-45.0,0.000508,0.0,101.0,1.0,0
+queens,N=100,Backtracking,1,0.0,0.0,0.0,2.021515,0.0,175.0,1.0,0
+queens,N=100,Genetic Algorithm,1,48.0,0.0,48.0,0.016579,0.0,156.0,0.0,0
+queens,N=100,Hybrid GA+SA,1,43.0,0.0,43.0,0.01983,0.0,257.0,0.0,0
+queens,N=100,Simulated Annealing,1,48.0,0.0,48.0,0.003541,0.0,101.0,0.0,0
+queens,N=50,Backtracking,1,0.0,0.0,0.0,0.178,0.0,902.0,1.0,0
+queens,N=50,Genetic Algorithm,1,19.0,0.0,19.0,0.010659,0.0,156.0,0.0,0
+queens,N=50,Hybrid GA+SA,1,18.0,0.0,18.0,0.013751,0.0,257.0,0.0,0
+queens,N=50,Simulated Annealing,1,28.0,0.0,28.0,0.003509,0.0,101.0,0.0,0
+queens,N=8,Backtracking,1,0.0,0.0,0.0,0.000513,0.0,39.0,1.0,0
+queens,N=8,Genetic Algorithm,1,1.0,0.0,1.0,0.001857,0.0,156.0,0.0,0
+queens,N=8,Hybrid GA+SA,1,1.0,0.0,1.0,0.002488,0.0,257.0,0.0,0
+queens,N=8,Simulated Annealing,1,0.0,0.0,0.0,0.000711,0.0,101.0,1.0,0
